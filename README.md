@@ -11,12 +11,12 @@ at your discretion.
 
 To use the provided interface...
 
-```
+```python
 from stripeterminal import StripeTerminal
 
 terminal = StripeTerminal("your_secret_key")
+
 async def run_payment_flow_once():
-    
     reader = (await terminal.discover_readers())[0]
     await terminal.connect_reader(reader)
     intent = PaymentIntent(
@@ -37,7 +37,7 @@ loop.run_forever()
 
 To provide another interface...
 
-```
+```python
 from stripeterminal import StripeInterfaceType
 
 class MyStripeTerminal(metaclass=StripeInterfaceType):
@@ -46,5 +46,6 @@ class MyStripeTerminal(metaclass=StripeInterfaceType):
     def discoverReaders(message, simulated=None, location=None): # function prototype
         # process return message and return list of discovered readers.
         return message["discoveredReaders"]
+    
     # implement other callbacks
 ```
