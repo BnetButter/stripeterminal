@@ -8,3 +8,43 @@ Not sure what happens if you use a virtual terminal. If you have all those thing
 at your discretion.
 
 `pip install stripeterminal`
+
+To use the provided interface...
+
+```
+from stripeterminal import StripeTerminal
+
+terminal = StripeTerminal("your_secret_key")
+async def run_payment_flow_once():
+    
+    reader = (await terminal.discover_readers())[0]
+    await terminal.connect_reader(reader)
+    intent = PaymentIntent(
+        amount=100,
+        currency="usd",
+        payment_method_types=["card_present"],
+        capture_method="manual",
+        )
+    intent = await terminal.collect_payment_method(intent["client_secret"])
+    intent = await terminal.process_payment(intent)
+    intent.capture()
+
+loop = asyncio.get_event_loop()
+task = loop.create_task(run_payment_flow_once())
+task.add_done_callback(lambda task: exit())
+loop.run_forever()
+```
+
+To provide another interface...
+
+```
+from stripeterminal import StripeInterfaceType
+
+class MyStripeTerminal(metaclass=StripeInterfaceType):
+  
+    @StripeAPI("discoverReaders") # name of method
+    def discoverReaders(message, simulated=None, location=None): # function prototype
+        # process return message and return list of discovered readers.
+        return message["discoveredReaders"]
+    # implement other callbacks
+```
