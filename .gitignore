@@ -1,0 +1,5 @@
+PyStripeTerminal.code-workspace
+**/node_modules
+**/__pycache__
+**/.vscode
+**/build
