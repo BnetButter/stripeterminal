@@ -3,13 +3,13 @@ from setuptools import setup
 setup(
     name="stripeterminal",
     packages=["stripeterminal"],
-    version="0.1",
+    version="0.2",
     license="GPL v3",
     description="Access Stripe's JavaScript terminal SDK from python",
     author="Kevin Lai",
     author_email="kevinlai31@gmail.com",
     url="https://github.com/bnetbutter/stripeterminal",
-    download_url="https://github.com/bnetbutter/stripeterminal/v_01.tar.gz",
+    download_url="https://github.com/bnetbutter/stripeterminal/v_02.tar.gz",
     install_requires=[
         "selenium",
         "websockets",

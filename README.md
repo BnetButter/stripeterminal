@@ -7,7 +7,7 @@ You'll also need a stripe api key. Most of the testing I've done was on a physic
 Not sure what happens if you use a virtual terminal. If you have all those things, use this package
 at your discretion.
 
-`pip install stripeterminal`
+`pip install stripeterminal` doesn't work.
 
 To use the provided interface...
 
