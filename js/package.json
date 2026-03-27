@@ -2,7 +2,7 @@
   "name": "stripe-terminal",
   "description": "access stripe's terminal sdk",
   "dependencies": {
-    "react-scripts": "^3.2.0"
+    "react-scripts": "^5.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
